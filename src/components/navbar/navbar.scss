@@ -34,8 +34,7 @@
     img {
         height: 75px;
         width: 75px;
-        margin-left: -75px !important;  /* This value must be the same as the logo width */
-
+        margin-left: -50px !important;
         &:hover {
             transform: scale(1.05);
         }

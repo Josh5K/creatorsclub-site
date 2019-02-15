@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './pages/landing/landing';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from './components/navbar/navbar';
+document.body.style = 'background: #F1574D;';
 
 class App extends Component {
   render() {
