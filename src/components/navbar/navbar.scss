@@ -1,0 +1,43 @@
+.navbar {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    border-bottom: 2px solid black;
+    height: 80px;
+    font-size: 1.5em;
+
+    a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+}
+
+.searchbar {
+    padding-top: 12px;
+}
+.prfpic {
+    height: 35px;
+    width: 35px;
+}
+
+#navstamp {
+    position: absolute;
+    left: 50%;
+    display: block;
+
+    img {
+        height: 75px;
+        width: 75px;
+        margin-left: -75px !important;  /* This value must be the same as the logo width */
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
