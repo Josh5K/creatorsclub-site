@@ -1,0 +1,36 @@
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.icons {
+    display: inline;
+    a {
+        padding: 10px;
+    }
+}
+
+.Browse {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.cardlink {
+    &:hover {
+        color: black;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
