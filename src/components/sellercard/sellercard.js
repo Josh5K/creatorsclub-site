@@ -7,19 +7,19 @@ import './sellercard.scss';
 class SellerCard extends Component {
     render() {
         return (
-            <Link style={{ textDecoration: 'none' }} to={this.props.seller.storelink} className="cardlink">
                 <div className="card">
-                    <img src={this.props.seller.image} alt="John" />
-                    <h1>{this.props.seller.seller}</h1>
-                    <p className="title">{this.props.seller.name}</p>
-                    <p>{this.props.seller.title}</p>
+                    <Link style={{ textDecoration: 'none' }} to={this.props.seller.storelink} className="cardlink">
+                        <img src={this.props.seller.image} alt="John" />
+                        <h1>{this.props.seller.seller}</h1>
+                        <p className="title">{this.props.seller.name}</p>
+                        <p>{this.props.seller.title}</p>
+                    </Link>
                     <div className="icons">
-                        <Link to={this.props.seller.youtube}><FontAwesomeIcon icon={faYoutube} /></Link>
-                        <Link to={this.props.seller.twitch}><FontAwesomeIcon icon={faTwitch} /></Link>
-                        <Link to={this.props.seller.twitter}><FontAwesomeIcon icon={faTwitter} /></Link>
+                        <a href={this.props.seller.youtube}><FontAwesomeIcon icon={faYoutube} /></a>
+                        <a href={this.props.seller.twitch}><FontAwesomeIcon icon={faTwitch} /></a>
+                        <a href={this.props.seller.twitter}><FontAwesomeIcon icon={faTwitter} /></a>
                     </div>
                 </div>
-            </Link>
         );
     }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './intro_card.scss';
 
 class Intro_Card extends Component {
-    render(props) {
+    render() {
         return (
             <div className="Card">
                 <img src={this.props.image} alt="image"/>

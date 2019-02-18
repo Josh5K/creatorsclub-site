@@ -11,6 +11,8 @@ import Navbar from './components/navbar/navbar';
 import Landing from './pages/landing/landing';
 import StoreLanding from './pages/storelanding/storelanding';
 import NotFound from './pages/404/404';
+import Store from './pages/store/store';
+import Product from './components/product/product';
 
 document.body.style = 'background: #F1574D;';
 
@@ -23,7 +25,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/store" component={StoreLanding} />
-            <Route component={NotFound}/>
+            <Route exact path="/store/:seller" component={Store} />
+            <Route exact path="/product/:product" component={Product} />
+            <Route component={Store}/>
           </Switch>
         </div>
       </Router>

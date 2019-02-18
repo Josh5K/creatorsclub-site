@@ -13,9 +13,19 @@
     max-width: 300px;
     margin: 20px;
     text-align: center;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
 
+.cardlink {
+    text-decoration: none;
     img {
         max-height: 400px;
+        max-width: 300px;
         border-bottom: 2px solid black;
+    }
+    &:hover {
+        color: black;
     }
 }
