@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faYoutube, faTwitter, faTwitch } from "@fortawesome/free-brands-svg-icons"
 import { Link } from 'react-router-dom'
 import './sellercard.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class SellerCard extends Component {
     render() {

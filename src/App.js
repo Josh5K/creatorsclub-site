@@ -13,6 +13,7 @@ import StoreLanding from './pages/storelanding/storelanding';
 import NotFound from './pages/404/404';
 import Store from './pages/store/store';
 import Product from './components/product/product';
+import Cart from './pages/cart/cart';
 
 document.body.style = 'background: #F1574D;';
 
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path="/store" component={StoreLanding} />
             <Route exact path="/store/:seller" component={Store} />
             <Route exact path="/product/:product" component={Product} />
+            <Route exact path="/cart" component={Cart} />
             <Route component={Store}/>
           </Switch>
         </div>
