@@ -13,7 +13,7 @@ class Navbar extends Component {
                 <Link className="navbar-brand" to="/"><img src={logo2} alt=""/></Link>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item active">
+                        <li className="nav-item">
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
@@ -32,7 +32,7 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <form className="form-inline my-2 my-lg-0 searchbar">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Search"/>
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                <button className="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
                             </form>
                         </li>
                         <li className="nav-item">

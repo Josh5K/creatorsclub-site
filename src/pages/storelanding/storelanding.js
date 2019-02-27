@@ -4,6 +4,7 @@ import SellerCard from '../../components/sellercard/sellercard';
 
 class StoreLanding extends Component {
 
+  // Dummy data until api is ready.
   state = {
     sellers: [
       {

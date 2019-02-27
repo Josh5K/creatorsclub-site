@@ -21,6 +21,18 @@
 .searchbar {
     padding-top: 12px;
 }
+
+.search-btn {
+    background-color: #3D4C68;
+    color: whitesmoke;
+    border-radius: 99999px;
+    width: 100px;
+    &:hover, &:focus, &:active{
+        background-color: #3D4C68 !important;
+        outline: none;
+    }
+}
+
 .prfpic {
     height: 35px;
     width: 35px;
