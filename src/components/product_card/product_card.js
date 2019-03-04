@@ -6,10 +6,10 @@ class ProductCard extends Component {
   render() {
     return (
         <Link to={"/product/" + this.props.link} className="product-wrapper">
-            <div class="card">
+            <div className="card">
                 <img src={this.props.image} alt="Product Image" />
                 <h1>{this.props.name}</h1>
-                <p class="price">{this.props.price}</p>
+                <p className="price">${this.props.price}</p>
             </div>
         </Link>
     );

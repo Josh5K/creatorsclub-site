@@ -5,6 +5,7 @@
     text-align: center;
     font-family: arial;
     margin: 10px;
+    height: 500px;
 
     img {
         max-height: 400px;
@@ -12,6 +13,9 @@
 
     &:hover {
         transform: scale(1.05);
+    }
+    h1 {
+        font-size: 1.3vw;
     }
 }
 
