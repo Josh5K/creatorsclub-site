@@ -1,65 +1,102 @@
 import React, { Component } from 'react';
 import './product.scss';
 import VerticalCarousel from '../vertical-carousel/vertical-carousel';
+import axios from 'axios';
+import _ from 'lodash';
 
 class Product extends Component {
-    state = {
-        variants: [
-          {
-            image: "https://creatorsclub.net/wp-content/uploads/2019/01/mockup-520c4b47.jpg"
-          },
-          {
-            image: "https://creatorsclub.net/wp-content/uploads/2019/01/mockup-520c4b47.jpg"
-          },
-          {
-            image: "https://creatorsclub.net/wp-content/uploads/2019/01/mockup-520c4b47.jpg"
-          },
-          {
-            image: "https://creatorsclub.net/wp-content/uploads/2019/01/mockup-520c4b47.jpg"
+
+      constructor(props) {
+          super(props);
+
+          this.state = {
+            product : "",
+            variants: [],
+            currentImage: "",
+            price: "",
+            colors: [],
+            sizes: [],
           }
-        ]
+
+        this.getProduct = this.getProduct.bind(this);
+        this.getOptions = this.getOptions.bind(this);
       }
+
+      componentDidMount() {
+          this.getProduct();
+      }
+
+      componentDidUpdate() {
+        //this.getOptions();
+      }
+
+      getOptions() {
+        this.state.variants.map(variant => {
+            this.setState(prevState => ({
+                colors: [this.options[0]],
+                sizes: [this.options[1]]
+              }))
+        })
+      }
+
+      getProduct() {
+        const { product } = this.props.match.params
+        let sizes = []
+        let colors = []
+
+        let url = `${process.env.API}/api/v1/products/${product}`
+        url = `http://localhost:3000/api/v1/products/${product}`
+
+        axios.get(url).then(response => {
+
+            response.data.product.variant.forEach(variant => {
+                sizes.push(variant.size)
+                colors.push(variant.color);
+            });
+
+            this.setState(prevState => ({
+                            product: response.data.product,
+                            variants: response.data.product.variant,
+                            currentImage: response.data.product.variant[0].image,
+                            price: response.data.product.variant[0].seller_price,
+                            colors: colors,
+                            sizes: sizes
+                        }))
+
+          this.currentImage = response.data.product.variant[0].image;
+        });
+      }
+
   render() {
     return (
         <div className="grid-container-p">
             <div className="vertical-carousel">
-                <VerticalCarousel variants={this.state.variants} />
+                <VerticalCarousel handler={this.setImage} variants={this.state.variants} />
             </div>
             <div className="product-image">
-                <img src="https://creatorsclub.net/wp-content/uploads/2019/01/mockup-520c4b47.jpg" alt="Product image" />
+                <img id="main-image" src={this.state.currentImage} alt="Product" />
             </div>
             <div className="product-info">
-                <h1>Alright. Unisex T-Shirt</h1>
-                <h2 className="price">$25.50 USD</h2>
+                <h1>{this.state.product.name}</h1>
+                <h2 className="price">${this.state.price}</h2>
                 <p>
-                    This t-shirt is everything! That is it. Just buy it already. Aqua on a shirt! seriously. Also all purchases go to support AquaFPS. You can feel good helping this gremlin out.
-
-                    • 100% combed and ring-spun cotton (heather colors contain polyester)
-                    • Fabric weight: 4.2 oz (142 g/m2)
-                    • Shoulder-to-shoulder taping
-                    • Side-seamed
-
-                    2-7 days production before shipping. Sizes are unisex so check the chart before buying.
-
-                    The Male model is wearing a size M. He’s 6.2 feet (190 cm) tall, chest circumference 37.7″ (96 cm), waist circumference 33.4″ (85 cm).
+                    {this.state.product.description}
                 </p>
                 <div className="product-options" >
                     <div className="product-colors select">
                         <h3>Colors</h3>
                         <select>
-                            <option value="Red">Red</option>
-                            <option value="Blue">Blue</option>
-                            <option value="Orange">Orange</option>
-                            <option value="Black">Black</option>
+                            {_.uniq(this.state.colors).map(color =>
+                                <option value={color}>{color}</option>
+                            )}
                         </select>
                     </div>
                     <div className="product-sizes select" >
                         <h3>Sizes</h3>
                         <select>
-                            <option value="Small">Small</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Large">Large</option>
-                            <option value="Extra Large">Extra Large</option>
+                            {_.uniq(this.state.sizes).map(size =>
+                                <option value={size}>{size}</option>
+                            )}
                         </select>
                     </div>
                     <div className="checkout">

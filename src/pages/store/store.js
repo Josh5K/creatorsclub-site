@@ -12,10 +12,10 @@ class Store extends Component {
       seller: "",
       products: []
     }
+  }
 
-    this.getProducts = this.getProducts.bind(this);
+  componentDidMount() {
     this.getProducts();
-
   }
 
   getProducts() {
@@ -23,8 +23,7 @@ class Store extends Component {
     const { seller } = this.props.match.params
     url = `http://localhost:3000/api/v1/sellers/${seller}`
     axios.get(url).then(response => {
-      this.setState({seller: response.data.seller})
-      this.setState({products: response.data.products})
+      this.setState({seller: response.data.seller, products: response.data.products})
     });
   }
 
@@ -32,7 +31,7 @@ class Store extends Component {
     return (
         <div className="grid-container">
           {this.state.products.map(product =>
-            <ProductCard image={product.variant[0].image} name={product.name} price={product.variant[0].seller_price} />
+            <ProductCard image={product.variant[0].image} name={product.name} price={product.variant[0].seller_price} link={product.id} />
           )};
         </div>
     );
