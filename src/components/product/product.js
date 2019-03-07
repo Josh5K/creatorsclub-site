@@ -3,6 +3,7 @@ import './product.scss';
 import VerticalCarousel from '../vertical-carousel/vertical-carousel';
 import axios from 'axios';
 import _ from 'lodash';
+import { addToCart } from '../../actions/cart'
 
 class Product extends Component {
 
@@ -66,6 +67,24 @@ class Product extends Component {
           this.currentImage = response.data.product.variant[0].image;
         });
       }
+
+    getCurrentProduct() {
+        let product;
+
+        this.state.variants.map(variant => {
+
+            const condition1 = variant.name === `${this.state.product.name} - ${document.getElementById('colors').value}`
+            const condition2 = variant.name === `${this.state.product.name} - ${document.getElementById('colors').value} / ${document.getElementById('sizes').value}`
+            const condition3 = variant.name === `${this.state.product.name}`
+
+            if(condition1 || condition2 || condition3) {
+                product = variant.printful_variant_id;
+            }
+
+        });
+
+        return product;
+    }
 
   render() {
     return (

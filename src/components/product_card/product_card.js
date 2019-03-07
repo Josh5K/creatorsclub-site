@@ -7,7 +7,7 @@ class ProductCard extends Component {
     return (
         <Link to={"/product/" + this.props.link} className="product-wrapper">
             <div className="card">
-                <img src={this.props.image} alt="Product Image" />
+                <img src={this.props.image} alt="Product" />
                 <h1>{this.props.name}</h1>
                 <p className="price">${this.props.price}</p>
             </div>
