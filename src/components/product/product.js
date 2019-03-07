@@ -45,8 +45,7 @@ class Product extends Component {
         let sizes = []
         let colors = []
 
-        let url = `${process.env.API}/api/v1/products/${product}`
-        url = `http://localhost:3000/api/v1/products/${product}`
+        let url = `${process.env.REACT_APP_API}/api/v1/products/${product}`
 
         axios.get(url).then(response => {
 

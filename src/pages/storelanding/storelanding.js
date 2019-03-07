@@ -17,8 +17,7 @@ class StoreLanding extends Component {
   }
 
   getSellers() {
-    let url = `${process.env.API}/api/v1/sellers`
-    url = 'http://localhost:3000/api/v1/sellers'
+    let url = `${process.env.REACT_APP_API}/api/v1/sellers`
     axios.get(url).then(response => this.setState({sellers: response.data.message}));
   }
 

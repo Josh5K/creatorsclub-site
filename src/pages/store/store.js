@@ -19,9 +19,8 @@ class Store extends Component {
   }
 
   getProducts() {
-    let url = `${process.env.API}/api/v1/sellers`
     const { seller } = this.props.match.params
-    url = `http://localhost:3000/api/v1/sellers/${seller}`
+    let url = `${process.env.REACT_APP_API}/api/v1/sellers/${seller}`
     axios.get(url).then(response => {
       this.setState({seller: response.data.seller, products: response.data.products})
     });
