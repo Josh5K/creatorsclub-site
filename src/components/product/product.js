@@ -19,8 +19,9 @@ class Product extends Component {
             sizes: [],
           }
 
+          this.product_id = this.props.match.params
+
         this.getProduct = this.getProduct.bind(this);
-        this.getOptions = this.getOptions.bind(this);
       }
 
       componentDidMount() {
@@ -28,17 +29,9 @@ class Product extends Component {
       }
 
       componentDidUpdate() {
-        //this.getOptions();
+
       }
 
-      getOptions() {
-        this.state.variants.map(variant => {
-            this.setState(prevState => ({
-                colors: [this.options[0]],
-                sizes: [this.options[1]]
-              }))
-        })
-      }
 
       getProduct() {
         const { product } = this.props.match.params
@@ -67,22 +60,23 @@ class Product extends Component {
         });
       }
 
-    getCurrentProduct() {
-        let product;
+    getCurrentVariant() {
+        let variant;
+        let url = `${process.env.REACT_APP_API}/api/v1/variants`
 
-        this.state.variants.map(variant => {
-
-            const condition1 = variant.name === `${this.state.product.name} - ${document.getElementById('colors').value}`
-            const condition2 = variant.name === `${this.state.product.name} - ${document.getElementById('colors').value} / ${document.getElementById('sizes').value}`
-            const condition3 = variant.name === `${this.state.product.name}`
-
-            if(condition1 || condition2 || condition3) {
-                product = variant.printful_variant_id;
+        let config = {
+            headers: {
+              size: document.getElementById("sizes").value,
+              color: document.getElementById("colors").value,
+              product_id: this.state.product.id
             }
+          }
 
+        console.log(config.headers);
+
+        axios.get(url, config).then(response => {
+            return response.data;
         });
-
-        return product;
     }
 
   render() {
@@ -103,7 +97,7 @@ class Product extends Component {
                 <div className="product-options" >
                     <div className="product-colors select">
                         <h3>Colors</h3>
-                        <select>
+                        <select id="colors">
                             {_.uniq(this.state.colors).map(color =>
                                 <option value={color}>{color}</option>
                             )}
@@ -111,7 +105,7 @@ class Product extends Component {
                     </div>
                     <div className="product-sizes select" >
                         <h3>Sizes</h3>
-                        <select>
+                        <select id="sizes">
                             {_.uniq(this.state.sizes).map(size =>
                                 <option value={size}>{size}</option>
                             )}
@@ -119,7 +113,7 @@ class Product extends Component {
                     </div>
                     <div className="checkout">
                         <button className="btn btn-primary" disabled>Add to wishlist</button>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button className="btn btn-primary" id="addToCart" onClick={this.getCurrentVariant.bind(this)}>Add to Cart</button>
                     </div>
                 </div>
             </div>
