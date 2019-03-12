@@ -25,6 +25,7 @@ document.body.style = 'background: #F1574D;';
 
 class App extends Component {
   render() {
+    axios.defaults.headers.common['X-Api-Key'] = process.env.REACT_APP_API_KEY
     return (
       <Router>
         <div>
