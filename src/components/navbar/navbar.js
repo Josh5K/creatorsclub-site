@@ -7,6 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 class Navbar extends Component {
+
+    logout() {
+        window.localStorage.removeItem("seller");
+        window.localStorage.removeItem("auth");
+        window.location.replace('/');
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,11 +43,28 @@ class Navbar extends Component {
                             </form>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
+                        { window.localStorage.getItem('seller') == "true" &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                        </li>
+                        }
+                        { window.localStorage.getItem('auth') === null &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
+                        }
+                        { window.localStorage.getItem('auth') === null &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Sign-up</Link>
+                        </li>
+                        }
+                        { window.localStorage.getItem('auth') !== null &&
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={this.logout.bind(this)}>Logout</a>
+                        </li>
+                        }
                         <li className="nav-item">
                             <Link className="nav-link" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
                         </li>

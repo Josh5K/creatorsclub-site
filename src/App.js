@@ -20,6 +20,9 @@ import SellerCard from './components/sellercard/sellercard';
 import SellerLanding from './pages/seller_dashboard/seller_landing/seller_landing';
 import SellerProducts from './pages/seller_dashboard/seller_products/seller_products';
 import SellerSettings from './pages/seller_dashboard/seller_settings/seller_settings';
+import axios from 'axios';
+import SignIn from './pages/sign_in/sign_in';
+import SignUp from './pages/sign_up/sign_up';
 
 document.body.style = 'background: #F1574D;';
 
@@ -39,6 +42,8 @@ class App extends Component {
             <Route exact path="/dashboard" component={SellerLanding} />
             <Route exact path="/dashboard/products" component={SellerProducts} />
             <Route exact path="/dashboard/settings" component={SellerSettings} />
+            <Route exact path="/login" component={SignIn} />
+            <Route exact path="/signup" component={SignUp} />
             <Route component={NotFound}/>
           </Switch>
         </div>
