@@ -3,7 +3,8 @@ import './product.scss';
 import VerticalCarousel from '../vertical-carousel/vertical-carousel';
 import axios from 'axios';
 import _ from 'lodash';
-import { addToCart } from '../../actions/cart'
+import Cart_ from '../../actions/cart'
+import QuantityBox from '../../components/quantity_box/quantity_box'
 
 class Product extends Component {
 
@@ -71,12 +72,19 @@ class Product extends Component {
               product_id: this.state.product.id
             }
           }
-
-        console.log(config.headers);
-
         axios.get(url, config).then(response => {
-            return response.data;
+            let quantity = document.getElementById("qty-value").innerHTML;
+            console.log(quantity)
+            if(quantity > 0) {
+
+                response.data.variant[0].quantity = quantity;
+                Cart_.addToCart(response.data.variant[0]);
+            }
         });
+    }
+
+    clearCart() {
+        Cart_.clearCart();
     }
 
   render() {
@@ -111,7 +119,11 @@ class Product extends Component {
                             )}
                         </select>
                     </div>
+                    <div>
+
+                    </div>
                     <div className="checkout">
+                        <QuantityBox />
                         <button className="btn btn-primary" disabled>Add to wishlist</button>
                         <button className="btn btn-primary" id="addToCart" onClick={this.getCurrentVariant.bind(this)}>Add to Cart</button>
                     </div>

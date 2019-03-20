@@ -1,0 +1,35 @@
+
+  .qty-box {
+    border: 1px solid black;
+    border-radius: 3px;
+    display: block;
+    height: 60px;
+    margin: 5px auto;
+    width: 200px;
+    background-color: #3D4C68;
+  }
+
+  span {
+    color: #62a8e2;
+    font-family: sans-serif;
+    float: left;
+    line-height: 60px;
+    text-align: center;
+    width: calc(200px/3);
+    -webkit-font-smoothing: antialiased;
+
+    &:nth-child(3) {
+        float: none;
+        margin-left: 18%;
+        margin-bottom: 5px;
+    }
+  }
+
+  .dec,
+  .inc {
+    height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }

@@ -16,7 +16,6 @@ class SignUp extends Component {
 
     sendSignUpRequest() {
         let url = `${process.env.REACT_APP_API}/api/v1/users/`
-        console.log("test");
         if(this.Password.value === this.Confirmation.value) {
             axios.post(url, {
                 username: this.Username.value,
