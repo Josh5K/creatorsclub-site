@@ -37,8 +37,8 @@ class Navbar extends Component {
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <form className="form-inline my-2 my-lg-0 searchbar">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search"/>
+                            <form className="form-inline my-2 my-lg-0 searchbar" action="/products" method="get">
+                                <input className="form-control mr-sm-2" id="product-search" type="search" name="search" placeholder="Search"/>
                                 <button className="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
                             </form>
                         </li>

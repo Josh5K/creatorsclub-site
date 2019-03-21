@@ -23,6 +23,8 @@ import SellerSettings from './pages/seller_dashboard/seller_settings/seller_sett
 import axios from 'axios';
 import SignIn from './pages/sign_in/sign_in';
 import SignUp from './pages/sign_up/sign_up';
+import Checkout from './pages/checkout/checkout';
+import Settings from './pages/settings/settings';
 
 document.body.style = 'background: #F1574D;';
 
@@ -44,6 +46,9 @@ class App extends Component {
             <Route exact path="/dashboard/settings" component={SellerSettings} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/products" component={Store} />
             <Route component={NotFound}/>
           </Switch>
         </div>
