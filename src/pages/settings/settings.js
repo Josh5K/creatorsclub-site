@@ -20,13 +20,27 @@ class Settings extends Component {
         });
     }
 
+    saveUserSettings() {
+        let url = `${process.env.REACT_APP_API}/api/v1/users`
+
+        axios.put(url, {
+            about: 'Test',
+            email: localStorage.getItem("auth")
+        }).then(response => {
+            alert("Saved!");
+        });
+    }
+
   render() {
     return (
         <div className="settings-container">
             <div className="form-container">
                 <h1>Account Settings</h1>
                 <hr/>
-
+                <form>
+                    <input type="file" name="profile-picture" id="profile-picture" ref={(input) => {this.ProfilePicture = input }} />
+                    <button type="button" className="btn btn-primary" onClick={this.saveUserSettings.bind(this)} >Update</button>
+                </form>
             </div>
             <div className="form-container">
                 <h1>Shipping information</h1>

@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Cart_ from '../../actions/cart'
 
 class Cart extends Component {
+
+	toCheckout() {
+		window.location.replace('/checkout');
+	}
+
   render() {
     return (
         <div className="container">
@@ -52,7 +57,7 @@ class Cart extends Component {
 						<td><a href="#" className="btn btn-warning"><i className="fa fa-angle-left"></i> Continue Shopping</a></td>
 						<td colSpan="2" className="hidden-xs"></td>
 						<td className="hidden-xs text-center"><strong>Total $1.99</strong></td>
-						<td><a href="#" className="btn btn-success btn-block">Checkout <i className="fa fa-angle-right"></i></a></td>
+						<td><a href="#" className="btn btn-success btn-block" onClick={this.toCheckout.bind(this)}>Checkout <i className="fa fa-angle-right"></i></a></td>
 					</tr>
 				</tfoot>
 			</table>
